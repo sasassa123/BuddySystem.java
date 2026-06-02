@@ -1,4 +1,5 @@
 # Buddy System — Simulador de Alocação de Memória
+Grupo:Felippe Matias Cardinot, João victor cracco.
 
 Simulador do Alocador Buddy Binário implementado em Java, com todas as estruturas de dados encadeadas manualmente 
 ---
