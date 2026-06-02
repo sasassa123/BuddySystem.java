@@ -50,18 +50,17 @@ public class Main {
     //  Menu
 
     private static void exibirMenu() {
-        System.out.println("\n╔══════════════════════════════════════════════════╗");
-        System.out.println("║       SIMULADOR BUDDY SYSTEM — 32 MB            ║");
-        System.out.println("╠══════════════════════════════════════════════════╣");
-        System.out.println("║  1. Alocar bloco                                ║");
-        System.out.println("║  2. Liberar bloco                               ║");
-        System.out.println("║  3. Desfazer (Undo)                             ║");
-        System.out.println("║  4. Exibir memória (árvore + listas + fila)     ║");
-        System.out.println("║  5. Fila de pendentes                           ║");
-        System.out.println("║  6. Listas de blocos livres                     ║");
-        System.out.println("║  7. Carregar dataset                            ║");
-        System.out.println("║  8. Sair                                        ║");
-        System.out.println("╚══════════════════════════════════════════════════╝");
+        System.out.println("\n");
+        System.out.println("  SIMULADOR BUDDY SYSTEM — 32 MB ");
+        System.out.println("");
+        System.out.println("  1. Alocar bloco  ");
+        System.out.println("  2. Liberar bloco ");
+        System.out.println(" 3. Desfazer (Undo) ");
+        System.out.println(" 4. Exibir memória (árvore + listas + fila)");
+        System.out.println("5. Fila de pendentes ");
+        System.out.println(" 6. Listas de blocos livres ");
+        System.out.println("7. Carregar dataset ");
+        System.out.println(" 8. Sair  ");
         System.out.print("Escolha: ");
     }
 
