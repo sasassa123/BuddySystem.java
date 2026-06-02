@@ -42,7 +42,7 @@ public class DatasetLoader {
                 switch (cmd) {
                     case "ALOCAR":
                         if (partes.length < 3) {
-                            System.out.println("  [ERRO] Sintaxe: ALOCAR <id> <tamanho_kb>");
+                            System.out.println("   Sintaxe: ALOCAR <id> <tamanho_kb>");
                             break;
                         }
                         try {
@@ -50,29 +50,29 @@ public class DatasetLoader {
                             int    tam = Integer.parseInt(partes[2]);
                             alocador.alocar(id, tam);
                         } catch (NumberFormatException e) {
-                            System.out.println("  [ERRO] Tamanho inválido: " + partes[2]);
+                            System.out.println("  Tamanho inválido: " + partes[2]);
                         }
                         break;
 
                     case "LIBERAR":
                         if (partes.length < 2) {
-                            System.out.println("  [ERRO] Sintaxe: LIBERAR <id>");
+                            System.out.println("   Sintaxe: LIBERAR <id>");
                             break;
                         }
                         alocador.liberar(partes[1]);
                         break;
 
                     default:
-                        System.out.println("  [AVISO] Comando desconhecido: " + cmd);
+                        System.out.println("   Comando desconhecido: " + cmd);
                 }
 
                 // Exibe estado após cada operação
                 visualizador.exibirBuddyInfo();
             }
         } catch (IOException e) {
-            System.out.println("[ERRO] Não foi possível abrir o arquivo: " + caminho);
+            System.out.println(" Não foi possível abrir o arquivo: " + caminho);
             System.out.println("       " + e.getMessage());
         }
-        System.out.println("\n=== Dataset processado. ===");
+        System.out.println("\n= Dataset processado. =");
     }
 }
