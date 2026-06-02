@@ -157,7 +157,7 @@ public class BuddyAlocador {
     public boolean alocar(String id, int tamanhoSolicitadoKB) {
         // Verifica duplicidade de ID
         if (encontrarPorId(id) != null) {
-            System.out.println("  [ERRO] ID '" + id + "' já está em uso.");
+            System.out.println("   ID '" + id + "' já está em uso.");
             return false;
         }
         // Verifica se está na fila pendente
@@ -165,7 +165,7 @@ public class BuddyAlocador {
 
         int tamanhoReal = proximaPotenciaDe2(tamanhoSolicitadoKB);
         if (tamanhoReal > MEMORIA_TOTAL_KB) {
-            System.out.println("  [ERRO] Requisição maior que a memória total.");
+            System.out.println("   Requisição maior que a memória total.");
             return false;
         }
         int nivel = nivelDeTamanho(tamanhoReal);
@@ -176,7 +176,7 @@ public class BuddyAlocador {
 
         int endereco = split(nivel);
         if (endereco == -1) {
-            System.out.println("  [SEM MEMÓRIA] Requisição '" + id
+            System.out.println("   Requisição '" + id
                     + "' adicionada à fila de pendentes.");
             filaPendentes.enfileirar(new RequisicaoPendente(id, tamanhoSolicitadoKB));
             return false;
@@ -190,7 +190,7 @@ public class BuddyAlocador {
             no.identificador = id;
         }
 
-        System.out.println("  [OK] '" + id + "' alocado: " + tamanhoReal
+        System.out.println("   '" + id + "' alocado: " + tamanhoReal
                 + " KB no endereço " + endereco + " KB");
 
         // Registra na pilha de histórico
@@ -208,7 +208,7 @@ public class BuddyAlocador {
     public boolean liberar(String id) {
         NoBinario no = encontrarPorId(id);
         if (no == null) {
-            System.out.println("  [ERRO] ID '" + id + "' não encontrado.");
+            System.out.println("   ID '" + id + "' não encontrado.");
             return false;
         }
 
@@ -294,7 +294,7 @@ public class BuddyAlocador {
                 no.identificador = req.identificador;
             }
 
-            System.out.println("  [FILA] Pendente '" + req.identificador
+            System.out.println("   Pendente '" + req.identificador
                     + "' atendido: " + tamanhoReal + " KB @ " + endereco + " KB");
             pilhaHistorico.empilhar(new OperacaoHistorico(
                     OperacaoHistorico.Tipo.ALOCAR, req.identificador, endereco, tamanhoReal));
@@ -308,17 +308,17 @@ public class BuddyAlocador {
      */
     public boolean desfazer() {
         if (pilhaHistorico.estaVazia()) {
-            System.out.println("  [UNDO] Nenhuma operação para desfazer.");
+            System.out.println("   Nenhuma operação para desfazer.");
             return false;
         }
         OperacaoHistorico op = pilhaHistorico.desempilhar();
-        System.out.println("  [UNDO] Revertendo: " + op);
+        System.out.println("   Revertendo: " + op);
 
         if (op.tipo == OperacaoHistorico.Tipo.ALOCAR) {
             // Desfazer alocação → liberar (sem empilhar novo histórico)
             NoBinario no = encontrarPorId(op.identificador);
             if (no == null) {
-                System.out.println("  [UNDO] Bloco não encontrado na árvore.");
+                System.out.println("   Bloco não encontrado na árvore.");
                 return false;
             }
             no.estado = NoBinario.Estado.LIVRE;
@@ -326,13 +326,13 @@ public class BuddyAlocador {
             int nivel = nivelDeTamanho(no.tamanho);
             listasLivres[nivel].inserir(no.endereco);
             mergeSubindo(no);
-            System.out.println("  [UNDO] Alocação de '" + op.identificador + "' revertida.");
+            System.out.println("   Alocação de '" + op.identificador + "' revertida.");
         } else {
             // Desfazer liberação → realocar (sem empilhar novo histórico)
             int nivel = nivelDeTamanho(op.tamanhoBloco);
             int endereco = split(nivel);
             if (endereco == -1) {
-                System.out.println("  [UNDO] Sem memória para restaurar liberação.");
+                System.out.println("   Sem memória para restaurar liberação.");
                 return false;
             }
             listasLivres[nivel].remover(endereco);
@@ -341,7 +341,7 @@ public class BuddyAlocador {
                 no.estado = NoBinario.Estado.OCUPADO;
                 no.identificador = op.identificador;
             }
-            System.out.println("  [UNDO] Liberação de '" + op.identificador + "' revertida.");
+            System.out.println("   Liberação de '" + op.identificador + "' revertida.");
         }
         return true;
     }
