@@ -48,7 +48,7 @@ public class NoPilhaHistorico<T> {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder("[TOPO: ");
+        StringBuilder sb = new StringBuilder("TOPO: ");
         NoPilha<T> atual = topo;
         while (atual != null) {
             sb.append(atual.dado);
