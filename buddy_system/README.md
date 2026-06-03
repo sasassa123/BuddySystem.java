@@ -6,8 +6,6 @@ Simulador do Alocador Buddy Binário implementado em Java, com todas as estrutur
 
 ## Compilação e Execução
 
-### Pré-requisito
-JDK 11 ou superior instalado.
 
 ### Compilar
 ```bash
