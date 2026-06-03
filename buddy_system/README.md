@@ -181,4 +181,4 @@ Requisições são arredondadas para a próxima potência de 2 ≥ buddy mínimo
 | 5120 KB | 8192 KB | 3072 KB | 38% |
 | 12288 KB | 16384 KB | 4096 KB | 25% |
 
-Valores retirados da execução real do `dataset.txt` incluído no repositório.
+Valores retirados da execução real do `dataset.txt`.
